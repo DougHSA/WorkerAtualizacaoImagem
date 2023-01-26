@@ -13,5 +13,6 @@ namespace WorkerAtualizacaoImagem.Services.Interfaces
         Task UpdateCreationTimeImages(string[] skus);
         Task AppendImageNameTxt(string imageName, string type);
         Task<List<string>> ReadImageError(string type);
+        Task InsertSkusInTxt(string[] insertSkus);
     }
 }

@@ -47,8 +47,7 @@ namespace WorkerAtualizacaoImagem.Services
 
                         string imageType = extension.ToLower() == "jpg" ? "jpeg" : extension;
 
-                        if (image[0].Contains("_1"))
-                            types = new string[] { "image", "small_image", "thumbnail", "swatch_image" };
+                        types = new string[] { "image", "small_image", "thumbnail", "swatch_image" };
 
                         Content content = new Content
                         {
@@ -58,7 +57,7 @@ namespace WorkerAtualizacaoImagem.Services
                         };
                         var media = new MediaGalleryEntry
                         {
-                            Position = Convert.ToInt32(image[0].Split("_")[1]),
+                            Position = 1,
                             Disabled = false,
                             Label = "",
                             MediaType = "image",
@@ -90,5 +89,6 @@ namespace WorkerAtualizacaoImagem.Services
         public Task<bool> Delete(MediaGalleryEntry mediaGallery, string sku) => _m2.Delete(mediaGallery, sku);
         public Task<List<MediaGalleryEntry>> GetBySku(MediaGalleryEntry mediaGallery, string sku) => _m2.GetBySku(mediaGallery, sku);
         public Task<bool> Update(MediaGalleryEntry mediaGallery, string sku) => _m2.Update(mediaGallery, sku);
+        public Task<string[]> GetProductsWithoutImage()=>_m2.GetProductsWithoutImage();
     }
 }

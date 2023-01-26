@@ -60,6 +60,9 @@ namespace WorkerAtualizacaoImagem.Services
                     case ("Delete"):
                         path += @"\ErrorDeleteImages.txt";
                         break;
+                    case("Reinsert"):
+                        path += @"\Sku's.txt";
+                        break;
 
                     default:
                         throw new Exception("Operation could not be found.");
@@ -107,6 +110,10 @@ namespace WorkerAtualizacaoImagem.Services
                 throw;
             }
             return returnArray.ToList();
+        }
+        public async Task InsertSkusInTxt(string[] insertSkus)
+        {
+
         }
 
 

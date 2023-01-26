@@ -21,7 +21,7 @@ namespace WorkerAtualizacaoImagem.Repository
         public async Task<List<FileInfo>> SearchImages()
         {
             var directoryInfo = new DirectoryInfo(_settings.ImagesFolder);
-            return directoryInfo.GetFiles("*.jpg").Where(i=>i.Name.Contains("_")).ToList();
+            return directoryInfo.GetFiles("*.jpg").Where(i => i.Name.Contains("_")).ToList();
         }
 
         public async Task<List<FileInfo>> SearchInsertImages(List<FileInfo> actualImages, List<FileInfo> previousList, List<string> erroInsertImages)

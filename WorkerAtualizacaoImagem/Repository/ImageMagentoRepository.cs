@@ -122,6 +122,25 @@ namespace Repository
             }
             return false;
         }
+        public async Task<string[]> GetProductsWithoutImage()
+        {
+            string[] skus = { };
+            try
+            {
+                var result = await _m2.GET(_endpoint + "-without-image");
+                if (result != null)
+                {
+                    var products = JsonConvert.DeserializeObject<ProductWithoutImage>(result);
+                    if(products.Status)
+                        skus = products.Skus;
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message + e.StackTrace + "\n");
+            }
+            return skus;
+        }
 
         private MediaGalleryEntry MapperMedia(MediaGalleryEntry mediaGallery, List<MediaGalleryEntry> oldMedia)
         {

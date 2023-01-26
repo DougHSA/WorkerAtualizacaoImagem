@@ -10,5 +10,6 @@ namespace Repository.Interfaces
         Task<bool> Delete(MediaGalleryEntry mediaGallery, string sku);
         Task<List<MediaGalleryEntry>> GetBySku(MediaGalleryEntry mediaGallery, string sku);
         Task<bool> Update(MediaGalleryEntry mediaGallery, string sku);
+        Task<string[]> GetProductsWithoutImage();
     }
 }
