@@ -130,7 +130,7 @@ namespace WorkerAtualizacaoImagem
                     {
                         try 
                         {
-                            var sku = image.Name.Split(".")[0];
+                            var sku = image.Name.Split("_")[0];
                             var insertedImage = await _m2.Create(imagesList.FirstOrDefault(i=>i.Content.Name.Equals(image.Name)), sku);
 
                             if (insertedImage == (-1))
@@ -181,7 +181,7 @@ namespace WorkerAtualizacaoImagem
 
                     foreach(var image in updateImages)
                     {
-                        var sku = image.Name.Split(".")[0];
+                        var sku = image.Name.Split("_")[0];
                         var updatedImage = await _m2.Update(imagesList.FirstOrDefault(i => i.Content.Name.Equals(image.Name)), sku);
                         
                         if(updatedImage)
@@ -222,7 +222,7 @@ namespace WorkerAtualizacaoImagem
 
                     foreach (var image in deleteImages)
                     {
-                        var sku = image.Name.Split(".")[0];
+                        var sku = image.Name.Split("_")[0];
                         var deletedImage = await _m2.Delete(imagesList.FirstOrDefault(i => i.Content.Name.Equals(image.Name)), sku);
 
                         if(deletedImage)
