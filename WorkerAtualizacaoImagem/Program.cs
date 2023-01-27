@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WorkerAtualizacaoImagem;
+using Microsoft.Extensions.Logging;
 using WorkerAtualizacaoImagem.Startup_Extensions;
-
 
 namespace WorkerAtualizacaoImagem
 {
@@ -19,6 +18,13 @@ namespace WorkerAtualizacaoImagem
                     services.AddHostedService<Worker>();
                     services.AddIoCExtensions();
                     services.AddSessionsServiceExtensions(configuration);
+                    services.AddLogging(logginBuilder =>
+                    {
+                        //logginBuilder.AddSeq(configuration.GetSection("Seq"));
+                        logginBuilder.AddConfiguration(configuration.GetSection("seq"));
+                        logginBuilder.AddSeq("http://168.138.250.55:5341", "yp8AGP25rGbVKP6MMiEp");
+                        //logginBuilder.AddSeq();
+                    }); 
                 })
                 .Build();
 
