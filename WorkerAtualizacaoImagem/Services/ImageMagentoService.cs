@@ -44,10 +44,17 @@ namespace WorkerAtualizacaoImagem.Services
                             .Split(".");
 
                         string image64 = ParseToBase64(image[0]);
-
                         string imageType = extension.ToLower() == "jpg" ? "jpeg" : extension;
 
-                        types = new string[] { "image", "small_image", "thumbnail", "swatch_image" };
+                        if (image[0].Contains("_"))
+                        {
+                            if (image[0].Contains("_1"))
+                                types = new string[] { "image", "small_image", "thumbnail", "swatch_image" };
+                        }
+                        else
+                        {
+                            types = new string[] { "image", "small_image", "thumbnail", "swatch_image" };
+                        }
 
                         Content content = new Content
                         {
